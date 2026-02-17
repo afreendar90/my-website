@@ -19,7 +19,7 @@ const issueCardTemplate = document.getElementById('issue-card-template');
 let issues = loadIssues();
 
 googleLoginBtn.addEventListener('click', () => {
-  const mockUser = { name: 'Google Resident', mobile: 'N/A', method: 'google' };
+  const mockUser = { name: 'Google Resident', method: 'google' };
   localStorage.setItem(USER_KEY, JSON.stringify(mockUser));
   initializePortal(mockUser);
 });
@@ -29,7 +29,6 @@ nameLoginForm.addEventListener('submit', (event) => {
   const formData = new FormData(nameLoginForm);
   const user = {
     name: String(formData.get('loginName')).trim(),
-    mobile: String(formData.get('loginMobile')).trim(),
     method: 'manual'
   };
   localStorage.setItem(USER_KEY, JSON.stringify(user));
