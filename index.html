@@ -1,12 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oxy Bmond Society Portal</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Hi, I’m Afreen 👋</h1>
-    <p>This is my first website!</p>
-    <button>Contact Me</button>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Society Operations Portal</p>
+      <h1>Oxy Bmond Issue Tracker</h1>
+      <p>
+        A basic platform for residents to report society issues and for committee members
+        to provide progress updates.
+      </p>
+    </div>
+    <div class="pill-group">
+      <span class="pill">Maintenance</span>
+      <span class="pill">Housekeeping</span>
+      <span class="pill">Security</span>
+      <span class="pill">Common Areas</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>Log a New Issue</h2>
+      <form id="issue-form" class="form-grid">
+        <label>
+          Resident Name
+          <input id="residentName" name="residentName" required placeholder="e.g., Priya Shah" />
+        </label>
+
+        <label>
+          Flat / Unit
+          <input id="unitNumber" name="unitNumber" required placeholder="e.g., B-402" />
+        </label>
+
+        <label>
+          Contact Number
+          <input id="contactNumber" name="contactNumber" placeholder="e.g., +91 99999 12345" />
+        </label>
+
+        <label>
+          Category
+          <select id="category" name="category" required>
+            <option value="">Select Category</option>
+            <option>Maintenance</option>
+            <option>Water Supply</option>
+            <option>Electrical</option>
+            <option>Cleaning</option>
+            <option>Security</option>
+            <option>Parking</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label class="full-width">
+          Issue Title
+          <input id="issueTitle" name="issueTitle" required placeholder="Short summary of issue" />
+        </label>
+
+        <label class="full-width">
+          Description
+          <textarea id="issueDescription" name="issueDescription" rows="4" required placeholder="Describe the issue in detail"></textarea>
+        </label>
+
+        <button type="submit" class="primary-btn">Submit Issue</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-header">
+        <h2>Track Existing Issues</h2>
+        <label class="committee-toggle">
+          <input id="committeeMode" type="checkbox" />
+          Committee Mode
+        </label>
+      </div>
+
+      <div class="filters">
+        <label>
+          Status
+          <select id="statusFilter">
+            <option value="All">All</option>
+            <option value="Open">Open</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </label>
+        <label>
+          Search
+          <input id="searchInput" placeholder="Search by title, resident or unit" />
+        </label>
+      </div>
+
+      <div id="issueList" class="issue-list"></div>
+      <p id="emptyState" class="empty-state">No issues found.</p>
+    </section>
+  </main>
+
+  <template id="issue-card-template">
+    <article class="issue-card">
+      <div class="issue-head">
+        <div>
+          <h3 class="issue-title"></h3>
+          <p class="issue-meta"></p>
+        </div>
+        <span class="status-badge"></span>
+      </div>
+      <p class="issue-description"></p>
+      <p class="issue-id"></p>
+
+      <div class="updates-section">
+        <h4>Committee Updates</h4>
+        <ul class="updates-list"></ul>
+      </div>
+
+      <form class="committee-form hidden">
+        <label>
+          Update Status
+          <select class="status-select">
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+          </select>
+        </label>
+        <label>
+          Add Update
+          <textarea class="update-text" rows="2" placeholder="Add progress note"></textarea>
+        </label>
+        <button type="submit" class="secondary-btn">Save Update</button>
+      </form>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
 </body>
 </html>
-
