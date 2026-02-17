@@ -1,18 +1,205 @@
+:root {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --text: #1f2d3d;
+  --muted: #677788;
+  --primary: #0057d9;
+  --primary-soft: #e6efff;
+  --success: #19764a;
+  --warning: #b86d00;
+  --danger: #b42318;
+  --border: #dde5ef;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f4f4f4;
-    padding: 50px;
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
-h1 {
-    color: #2c3e50;
+.hidden { display: none !important; }
+
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+.login-card {
+  width: min(460px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: 0 8px 20px rgba(16, 24, 40, 0.08);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.eyebrow.dark { color: var(--muted); }
+
+.subtext { color: var(--muted); }
+
+.google-btn,
+.primary-btn,
+.secondary-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.google-btn {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--border);
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: #fff;
+  width: fit-content;
+}
+
+.secondary-btn {
+  background: var(--primary-soft);
+  color: #0f3f93;
+}
+
+.divider {
+  margin: 1rem 0;
+  position: relative;
+  text-align: center;
+  color: var(--muted);
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  inset: 50% 0 auto 0;
+  border-top: 1px solid var(--border);
+  z-index: 0;
+}
+
+.divider span {
+  position: relative;
+  z-index: 1;
+  background: var(--panel);
+  padding: 0 0.6rem;
+}
+
+.login-form,
+label {
+  display: grid;
+  gap: 0.5rem;
+}
+
+input,
+select,
+textarea { 
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0f3f93, #0057d9);
+  color: #fff;
+  padding: 1.2rem clamp(1rem, 5vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-right {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.welcome-text { margin: 0; }
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 5vw, 4rem) 2rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.full-width { grid-column: 1 / -1; }
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.committee-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.issue-list { display: grid; gap: 0.75rem; }
+
+.issue-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem;
+  background: #fbfdff;
+}
+
+.issue-head { display: flex; justify-content: space-between; gap: 0.5rem; }
+.issue-title { margin: 0; }
+.issue-meta, .issue-id { margin: 0.2rem 0; color: var(--muted); font-size: 0.85rem; }
+
+.status-badge { align-self: flex-start; font-size: 0.8rem; border-radius: 999px; padding: 0.2rem 0.65rem; border: 1px solid; }
+.status-open { color: var(--danger); background: #fdecec; border-color: #f8c3c3; }
+.status-in-progress { color: var(--warning); background: #fff5e5; border-color: #ffd79a; }
+.status-resolved { color: var(--success); background: #e8f7ef; border-color: #b5e5cb; }
+
+.updates-list { margin: 0; padding-left: 1.1rem; }
+.updates-list li { margin-bottom: 0.35rem; color: var(--muted); }
+
+.committee-form { margin-top: 0.7rem; display: grid; gap: 0.55rem; }
+
+.empty-state { color: var(--muted); text-align: center; margin: 1rem 0; }
+
+@media (max-width: 720px) {
+  .form-grid { grid-template-columns: 1fr; }
 }
